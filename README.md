@@ -1,6 +1,7 @@
 # Shopping List
 A simple shopping list web application made with Vue.js and PouchDB with "Offline First" approach. The application is a PWA (Progressive Web App) and can be installed on your device.
 
+The list and items are stored in the browser's local storage and can be accessed offline. The data can also be synced with a remote CouchDB server.
 ## Run Locally
 
 - [Shopping List](#shopping-list)
