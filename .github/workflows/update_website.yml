@@ -27,6 +27,7 @@ jobs:
           cp repo/index.html for_website/index.html
           cp repo/manifest.json for_website/manifest.json
           cp repo/worker.js for_website/worker.js
+          cp repo/image for_website/images -r
 
       - name: Push changes to website branch
         run: |
