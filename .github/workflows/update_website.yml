@@ -1,0 +1,41 @@
+name: Update Shopping List Website
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  prepare_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: 'repo'
+
+      - name: Setup Git config
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'github-action@noreply.com'
+
+      - name: Copy files to for_website directory
+        run: |
+          mkdir for_website
+          cp repo/shopping_list/shoppinglist.css for_website/shoppinglist.css
+          cp repo/shopping_list/shoppinglist.js for_website/shoppinglist.js
+          cp repo/shopping_list/index.html for_website/index.html
+          cp repo/shopping_list/manifest.json for_website/manifest.json
+          cp repo/shopping_list/worker.js for_website/worker.js
+
+      - name: Push changes to website branch
+        run: |
+          cd for_website
+          git init
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/officialbishowb/shopping_list.git
+          git checkout --orphan website
+          git add . 
+          git commit -m "Update website content"
+          git push --force origin website
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
