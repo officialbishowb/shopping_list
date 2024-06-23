@@ -1,0 +1,77 @@
+body {
+  background-color: #e2e2e2;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.md-theme-default.md-list{
+  background-color: #e2e2e2 !important;
+}
+
+.md-theme-default.md-card {
+  background-color: #e2e2e2 !important;
+  margin:20px
+}
+.add-shopping-list-header{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.md-button.md-icon-button.md-theme-default.list-name-added{
+  background-color: #27445C;
+  color: #e2e2e2;
+}
+.md-button.md-icon-button.md-theme-default.list-name-added:hover{
+  background-color: #27445C;
+  color: #e2e2e2;
+}
+
+.md-theme-default.md-toolbar{
+  background-color: #202A44 !important;
+  color: #e2e2e2 !important;
+}
+.md-card-content {
+  border-top: 1px solid #ddd;
+}
+.md-theme-default.md-button:not([disabled]).md-primary.md-raised, .md-theme-default.md-button:not([disabled]).md-primary.md-fab {
+  background-color: #202A44 !important;
+}
+
+.md-card .md-card-content:last-child {
+  padding-bottom:0px !important;
+}
+
+.md-list-text-container {
+  display: block;
+}
+.md-theme-default.md-card a {
+  color: #202A44 !important;
+  text-decoration: underline;
+}
+.md-theme-default.md-card{
+  background-color: #fff !important;
+}
+
+.cardchecked {
+  text-decoration: line-through;
+  color: #ccc
+}
+
+.floatingbutton {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 1000;
+}
+
+.main-toolbar{
+  position:sticky;
+  top:0px;
+  z-index:1000;
+}
+
+.itemedit {
+  background-color: #e2e2e2 !important
+}
