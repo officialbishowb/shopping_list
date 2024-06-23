@@ -25,7 +25,8 @@
   "homepage": "https://github.com/ibm-watson-data-lab/shopping-list-vuejs-pouchdb#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "metrics-tracker-client": "^0.2.3"
+    "metrics-tracker-client": "^0.2.3",
+    "pouchdb-find": "^9.0.0"
   },
   "devDependencies": {
     "cypress": "^13.7.0"

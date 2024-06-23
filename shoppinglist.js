@@ -1,6 +1,8 @@
 // this will be the PouchDB database
 var db = new PouchDB("shopping");
 
+
+
 // template shopping list object
 const sampleShoppingList = {
   _id: "",
@@ -121,6 +123,8 @@ var app = new Vue({
     selectedPlace: null,
     syncURL: "",
     syncStatus: "notsyncing",
+    listSearchQuery: '',
+    itemSearchQuery: '',
   },
   // computed functions return data derived from the core data.
   // if the core data changes, then this function will be called too.
@@ -172,7 +176,7 @@ var app = new Vue({
    */
   created: function () {
     // create database index on 'type'
-    db.createIndex({ index: { fields: ["type"] } })
+    db.createIndex({ index: { fields: ["type","title"] } })
       .then(() => {
         // load all 'list' items
         var q = {
@@ -561,6 +565,61 @@ var app = new Vue({
       db.remove(match.doc).then((data) => {
         this.shoppingListItems.splice(match.i, 1);
       });
+    },
+
+    /**
+     * Called when the user wants to search for a shopping list.
+     */
+    onClickSearchLists: function () {
+      clearTimeout(this.searchTimeout);
+
+      this.searchTimeout = setTimeout(() => {
+        let query = {
+          selector: {
+            type: "list",
+          },
+        };
+
+        if (this.listSearchQuery) {
+          query.selector.title = {
+            $regex: new RegExp(this.listSearchQuery, "i"),
+          };
+        }
+
+        db.find(query).then((data) => {
+          this.shoppingLists = data.docs;
+        }).catch((error) => {
+          console.error('Error searching:', error);
+        });
+      }, 300);
+    },
+
+    /**
+     * Called when the user wants to search items in a shopping list.
+     */
+    onClickSearchItems: function () {
+      clearTimeout(this.searchTimeout);
+    
+      this.searchTimeout = setTimeout(() => {
+        let query = {
+          selector: {
+            type: "item",
+          },
+        };
+    
+        if (this.itemSearchQuery) {
+          query.selector.title = {
+            $regex: new RegExp(this.itemSearchQuery, "i"), 
+          };
+        }
+    
+        db.find(query).then((data) => {
+          this.shoppingListItems = data.docs;
+
+        }).catch((error) => {
+          console.error('Error searching:', error);
+        });
+      }, 300); 
     },
   },
 });

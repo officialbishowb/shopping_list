@@ -162,6 +162,15 @@
       <!-- shopping list item editor -->
       <md-list class="itemedit" v-if="mode == 'itemedit'">
 
+        <md-list-item>
+          <md-input-container>
+            <md-input v-model="itemSearchQuery" id="searchInput" placeholder="Search items..." @input="onClickSearchItems"></md-input>
+            <md-button class="md-icon-button md-list-action" @click="onClickSearchItems" id="searchButton">
+              <md-icon>search</md-icon>
+            </md-button>
+          </md-input-container>
+      </md-list-item>
+      
         <!-- shopping list item add form -->
         <md-list-item>
           <!-- shopping item title -->
@@ -178,6 +187,8 @@
             <md-icon class="md-primary">add_shopping_cart</md-icon>
           </md-button>
         </md-list-item>
+
+        
 
         <!-- shopping list items -->
         <md-list-item v-for="item in sortedShoppingListItems" :key="item._id" v-if="item.list == currentListId">
@@ -205,6 +216,15 @@
 
       <!-- list of shopping lists -->
       <md-list v-if="mode == 'showlist'">
+        <md-card>
+          <md-card-content>
+            <md-input-container>
+              <label>Search</label>
+              <md-input placeholder="Search..." id="search" v-model="listSearchQuery" @input="onClickSearchLists"></md-input>
+            </md-input-container>   
+          </md-card-content>
+        </md-card>
+
         <md-card v-for="list in sortedShoppingLists" :key="list._id" :data-id="list._id">
           <md-card-header>
             <!-- shopping list title -->
