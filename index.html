@@ -7,7 +7,7 @@
   <title>Shopping List</title>
 
   <!-- mobile styling -->
-  <meta name="theme-color" content="#202A44">
+  <meta name="theme-color" content="#342e37">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="#202A44">
@@ -75,7 +75,7 @@
           <!-- save new shopping list button -->
           <md-button class="md-icon-button" id="addList" v-on:click="onClickSaveShoppingList"
             v-bind:disabled="singleList.title.length == 0"
-            v-bind:class="{ 'list-name-added': singleList.title.length > 0}">
+            v-bind:class="{ 'list-name-added clickable': singleList.title.length > 0}">
             <md-icon>check</md-icon>
           </md-button>
         </div>
@@ -94,7 +94,7 @@
           <!-- shopping place name -->
           <md-input-container>
             <label>Place name</label>
-            <md-input placeholder="e.g. Whole Foods, Reno" id="placeName" v-model="singleList.place.title"></md-input>
+            <md-input placeholder="e.g. Hofer, Billa+" id="placeName" v-model="singleList.place.title"></md-input>
             <md-button class="md-raised" v-bind:disabled="singleList.place.title.length==0"
               v-on:click="onClickLookup">Lookup</md-button>
           </md-input-container>
@@ -166,7 +166,7 @@
           <md-input-container>
             <md-input v-model="itemSearchQuery" id="searchInput" placeholder="Search items..." @input="onClickSearchItems"></md-input>
             <md-button class="md-icon-button md-list-action" @click="onClickSearchItems" id="searchButton">
-              <md-icon>search</md-icon>
+              <md-icon class="is-accent-color">search</md-icon>
             </md-button>
           </md-input-container>
       </md-list-item>
@@ -184,7 +184,7 @@
           <!-- shopping item add button -->
           <md-button class="md-icon-button md-list-action" v-on:click="onAddListItem" id="addToCart"
             v-bind:disabled="newItemTitle.length == 0">
-            <md-icon class="md-primary">add_shopping_cart</md-icon>
+            <md-icon class="md-primary is-accent-color">add_shopping_cart</md-icon>
           </md-button>
         </md-list-item>
 
@@ -207,7 +207,7 @@
 
           <!-- shopping list item delete button -->
           <md-button v-on:click="onDeleteItem(item._id)" class="md-icon-button md-list-action">
-            <md-icon>cancel</md-icon>
+            <md-icon class="is-accent-color">cancel</md-icon>
           </md-button>
 
           <md-divider></md-divider>

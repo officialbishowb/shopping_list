@@ -1,62 +1,154 @@
-body {
-  background-color: #e2e2e2;
+:root {
+  --bb-text-color-light: #d5d5d5;
+  --bb-background-color: #342e37;
+  --bb-accent-color: #9fd356;
+  --bb-second-accent-color: #fa824c;
+  --bb-border-color: #d5d5d5; /* New variable for border color */
+  --bb-muted-text-color: #ccc; /* New variable for muted text (e.g., line-through text) */
 }
 
+/* General body background and text color */
+body {
+  background-color: var(--bb-background-color);
+  color: var(--bb-text-color-light);
+}
+
+/* Toolbar styling */
+.md-theme-default.md-toolbar {
+  background-color: var(--bb-background-color) !important;
+  color: var(--bb-text-color-light) !important;
+}
+
+/* Buttons styling */
+.md-theme-default.md-button.md-icon-button,
+.md-button.md-icon-button.md-theme-default,
+.md-button.md-icon-button.md-theme-default.list-name-added {
+  background-color: var(--bb-background-color);
+  color: var(--bb-text-color-light);
+}
+
+.md-theme-default.md-button.md-icon-button:hover,
+.md-button.md-icon-button.md-theme-default:hover,
+.md-button.md-icon-button.md-theme-default.list-name-added:hover {
+  background-color: var(--bb-accent-color);
+  color: var(--bb-background-color);
+}
+
+.md-theme-default.md-button:not([disabled]).md-primary.md-raised,
+.md-theme-default.md-button:not([disabled]).md-primary.md-fab,
+.md-theme-default.md-button.md-primary {
+  background-color: var(--bb-accent-color) !important;
+  color: var(--bb-background-color) !important;
+}
+
+/* Chips styling */
+.md-chip {
+  background-color: var(--bb-background-color);
+  color: var(--bb-text-color-light);
+}
+
+.md-chip.md-primary {
+  background-color: var(--bb-accent-color);
+  color: var(--bb-background-color);
+}
+
+.md-chip.md-warn {
+  background-color: var(--bb-second-accent-color);
+  color: var(--bb-background-color);
+}
+
+/* Cards styling */
+.md-theme-default.md-card,
+.md-theme-default.md-card-header {
+  background-color: var(--bb-background-color) !important;
+  color: var(--bb-text-color-light) !important;
+  margin: 20px;
+  border: 1px solid var(--bb-border-color);
+}
+
+.md-card-content {
+  border-top: 1px solid var(--bb-border-color);
+}
+
+.md-card .md-card-content:last-child {
+  padding-bottom: 0px !important;
+}
+
+.md-theme-default.md-card a {
+  color: var(--bb-accent-color) !important;
+  text-decoration: underline;
+}
+
+/* List styling */
+.md-theme-default.md-list {
+  background-color: var(--bb-background-color) !important;
+  color: var(--bb-text-color-light) !important;
+}
+
+/* Input containers */
+.md-theme-default.md-input-container {
+  background-color: var(--bb-background-color) !important;
+}
+
+.md-theme-default.md-input-container label,
+.md-theme-default.md-input-container input,
+.md-theme-default.md-input-container select,
+.md-theme-default.md-input-container textarea {
+  color: var(--bb-text-color-light);
+}
+
+.md-theme-default.md-input-container.md-input-focused input, 
+.md-theme-default.md-input-container.md-input-focused label {
+  text-shadow: 0 0 1px var(--bb-accent-color) !important;
+  color: var(--bb-text-color-light) !important;
+  --webkit-text-fill-color: var(--bb-text-color-light) !important;
+
+}
+
+.md-theme-default.md-input-container input {
+  border-bottom: 1px solid var(--bb-border-color) !important;
+  color: var(--bb-text-color-light);
+  background-color: var(--bb-background-color);
+  outline: none;
+}
+
+/* Floating button */
+.floatingbutton .md-fab {
+  background-color: var(--bb-accent-color);
+  color: var(--bb-background-color);
+}
+
+/* Checkbox */
+.md-checkbox.md-primary .md-checkbox-icon {
+  background-color: var(--bb-accent-color);
+  color: var(--bb-background-color);
+}
+
+/* Speed dial */
+.md-speed-dial .md-fab.md-primary {
+  background-color: var(--bb-accent-color);
+  color: var(--bb-background-color);
+}
+
+/* Divider */
+.md-divider {
+  background-color: var(--bb-border-color);
+}
+
+/* Additional styling */
 [v-cloak] {
   display: none;
 }
 
-.md-theme-default.md-list{
-  background-color: #e2e2e2 !important;
-}
-
-.md-theme-default.md-card {
-  background-color: #e2e2e2 !important;
-  margin:20px
-}
-.add-shopping-list-header{
+.add-shopping-list-header {
   align-items: center;
   display: flex;
   justify-content: space-between;
 }
-.md-button.md-icon-button.md-theme-default.list-name-added{
-  background-color: #27445C;
-  color: #e2e2e2;
-}
-.md-button.md-icon-button.md-theme-default.list-name-added:hover{
-  background-color: #27445C;
-  color: #e2e2e2;
-}
-
-.md-theme-default.md-toolbar{
-  background-color: #202A44 !important;
-  color: #e2e2e2 !important;
-}
-.md-card-content {
-  border-top: 1px solid #ddd;
-}
-.md-theme-default.md-button:not([disabled]).md-primary.md-raised, .md-theme-default.md-button:not([disabled]).md-primary.md-fab {
-  background-color: #202A44 !important;
-}
-
-.md-card .md-card-content:last-child {
-  padding-bottom:0px !important;
-}
-
-.md-list-text-container {
-  display: block;
-}
-.md-theme-default.md-card a {
-  color: #202A44 !important;
-  text-decoration: underline;
-}
-.md-theme-default.md-card{
-  background-color: #fff !important;
-}
 
 .cardchecked {
   text-decoration: line-through;
-  color: #ccc
+  color: var(--bb-muted-text-color);
 }
 
 .floatingbutton {
@@ -66,12 +158,51 @@ body {
   z-index: 1000;
 }
 
-.main-toolbar{
-  position:sticky;
-  top:0px;
-  z-index:1000;
+.main-toolbar {
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
 }
 
 .itemedit {
-  background-color: #e2e2e2 !important
+  background-color: var(--bb-background-color) !important;
+}
+
+#addList.clickable {
+  color: var(--bb-accent-color);
+ 
+}
+
+
+.md-theme-default.md-input-container.md-input-focused input{
+  border-bottom: 2px solid var(--bb-accent-color) !important;
+  outline: none;
+  box-shadow: none;
+}
+
+#addShoppingListItem {
+  color: var(--bb-accent-color);
+}
+
+.md-icon.md-theme-default.material-icons.is-accent-color {
+  color: var(--bb-accent-color) !important;
+}
+
+.md-icon.md-theme-default.material-icons.is-accent-color:hover {
+  color: var(--bb-background-color) !important;
+}
+.md-checkbox .md-checkbox-container{
+  border: 1px solid var(--bb-border-color);
+}
+
+.md-theme-default.md-checkbox.md-primary.md-checked .md-checkbox-container{
+  background-color: var(--bb-accent-color) !important;
+  border: 1px solid var(--bb-accent-color) !important;
+}
+.md-list-text-container > :nth-child(2), .md-list-text-container > :nth-child(3){
+  color: var(--bb-muted-text-color);
+}
+
+.md-ink-ripple div {
+  background-color: var(--bb-accent-color);
 }
